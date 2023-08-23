@@ -1,0 +1,57 @@
+name: "Batmon"
+description: "Monitor various BMS over bluetooth"
+url: https://github.com/daveprue/batmon
+version: "0.0.67"
+slug: "batmon"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+host_dbus: true
+apparmor: true
+services:
+  - mqtt:need
+options:
+  devices:
+    - address: CC:44:88:FF:AA:BB
+      type: jk
+      alias: battery1
+  mqtt_user: ""
+  mqtt_password: ""
+  mqtt_broker: "core-mosquitto"
+  concurrent_sampling: false
+  keep_alive: true
+  verbose_log: false
+  sample_period: 1.0
+  publish_period: 2.0
+  invert_current: true
+  watchdog: true
+  expire_values_after: 20
+  install_newer_bleak: false
+  bt_power_cycle: false
+schema:
+  devices:
+    - address: str
+      type: str
+      alias: "str?"
+      debug: "bool?"
+      pin: "str?"
+      algorithm: "str?"
+      current_calibration: "float?"
+  mqtt_user: "str?"
+  mqtt_password: "str?"
+  mqtt_broker: "str"
+  mqtt_port: "int(1,65535)?"
+  concurrent_sampling: "bool"
+  keep_alive: "bool"
+  verbose_log: "bool"
+  sample_period: "float"
+  publish_period: "float?"
+  invert_current: "bool"
+  watchdog: "bool"
+  expire_values_after: "float"
+  install_newer_bleak: "bool?"
+  bt_power_cycle: "bool?"

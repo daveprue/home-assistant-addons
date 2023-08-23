@@ -1,0 +1,4 @@
+[submodule "batmon"]
+	path = batmon
+	url = https://github.com/daveprue/batmon
+
